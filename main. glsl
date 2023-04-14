@@ -1,0 +1,14 @@
+void mainImage(out vec4 fragColor, in vec2 fragCoord)
+{
+    // Convert the fragment coordinates to a normalized range from -1 to 1
+    vec2 uv = fragCoord.xy / iResolution.xy * 2.0 - 1.0;
+
+    // Calculate the distance from the center of the screen
+    float dist = length(uv);
+
+    // Calculate the color based on the distance
+    vec3 color = vec3(dist, 0.5, 1.0 - dist);
+
+    // Output the final color
+    fragColor = vec4(color, 1.0);
+}
